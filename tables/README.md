@@ -231,7 +231,7 @@ The process of linking to Spark varies by language. In Java and Scala, you give 
 application a Maven dependency on the spark-core artifact. As of the time of writ‐
 ing, the latest Spark version is 1.2.0, and the Maven coordinates for that are:
 
-```scala
+```bash
 	groupId = org.apache.spark
 	artifactId = spark-core_2.10
 	version = 1.2.0
@@ -331,7 +331,7 @@ variables used by Spark.
       
 **Example 2-14.** Scala build and run (start from the `mini-complete-example` directory)
 
-```scala
+```bash
 	sbt clean package
 	$SPARK_HOME/bin/spark-submit \
 	--class com.oreilly.learningsparkexamples.mini.scala.WordCount \
