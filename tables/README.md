@@ -390,26 +390,14 @@ individual elements. Tables 4-1 and 4-2 summarize transformations on pair RDDs.
 
 **Example:** `rdd = {(1, 2), (3, 4), (3, 6)}; other = {(3, 9)}){(1, 2), (3, 4), (3, 6)}`
 
-|------------------|------------------------------|----------------------------|------------|
+
 |**Function name** | **Purpose**                  | **Example**                | **Result** |
-|------------------|------------------------------|----------------------------|------------|
-| `subtractByKey`  | Remove elements with a key   | `rdd.subtractByKey(other)` | `{(1, 2)}` |
-|                  | key present in the other RDD |                            |            |
-|------------------|------------------------------|----------------------------|------------|
-| `join`           | Perform an inner join        | `rdd.join(other)` | `{(3, (4, 9)), (3, (6, 9))}`|
-|                  | between two RDDs             |                   |                             | 
-|------------------|------------------------------|-------------------|---------------------------------|
-| `rightOuterJoin` | Perform a join between two   | `rdd.rightOuterJoin(other)` | `{(3,(Some(4),9)),`   |
-|                  | RDDs where the key must      |                             |   ` (3,(Some(6),9))}` |
-|                  | be present in the first RDD  |                             |                       |
-|------------------|------------------------------|-----------------------------|-----------------------|
-| `leftOuterJoin`  | Perform a join between two   | `rdd.leftOuterJoin(other)`  | `{(1,(2,None)),`      |
-|                  | RDDs where the key must      |                             |   ` (3,(4,Some(9))),` | 
-|                  | be present in the other RDD  |                             |   `(3,(6,Some(9)))}`  | 
-|------------------|------------------------------|-----------------------------|-----------------------|
-| `cogroup`        | Group data from both RDDs    | `rdd.cogroup(other)`        | `{(1,([2],[])),`      |
-|                  | sharing the same key         |                             |  `(3,([4, 6],[9]))}`  |
-|------------------|------------------------------|-----------------------------|-----------------------|
+| ---------------  | --------------------------   | -----------------------    |  --------  |
+| `subtractByKey`  | Remove elements with a key key present in the other RDD  | `rdd.subtractByKey(other)` | `{(1, 2)}` |
+| `join`           | Perform an inner join between two RDDs   | `rdd.join(other)` | `{(3, (4, 9)), (3, (6, 9))}`|
+| `rightOuterJoin` | Perform a join between two RDDs where the key must be present in the first RDD  | `rdd.rightOuterJoin(other)` | `{(3,(Some(4),9)),(3,(Some(6),9))}`   |
+| `leftOuterJoin`  | Perform a join between two RDDs where the key must be present in the other RDD  | `rdd.leftOuterJoin(other)`  | `{(1,(2,None)),(3,(4,Some(9))),(3,(6,Some(9)))}`      |
+| `cogroup`        | Group data from both RDDs sharing the same key | `rdd.cogroup(other)`        | `{(1,([2],[])),(3,([4, 6],[9]))}`      |
 
 #### Aggregations
 #### Grouping Data
