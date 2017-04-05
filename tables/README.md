@@ -376,14 +376,14 @@ individual elements. Tables 4-1 and 4-2 summarize transformations on pair RDDs.
 
 | Function name   | Purpose | Example | Result     |
 | --------------- | --------| ------- | ---------- |
-|`reduceByKey(func)` | Combine values with the same key| `rdd.reduceByKey((x, y) => x + y)`  | `{(1,2),(3,10)}`   |
-| `groupByKey()`     | Group values with the same key.   | `rdd.groupByKey()` |  `{(1,[2]),(3, [4,6])}`|
+| `reduceByKey(func)` | Combine values with the same key| `rdd.reduceByKey((x, y) => x + y)`  | `{(1,2),(3,10)}`   |
+| `groupByKey`     | Group values with the same key.   | `rdd.groupByKey()` |  `{(1,[2]),(3, [4,6])}`|
 | `combineByKey ( createCombiner, mergeValue, mergeCombiners, partitioner )`  | Combine values with the same key using a different result type. | See Ex 4-12--4-14 |       |
 | `mapValues(func)` |  Apply a function to each value of a pair RDD without changing the key |  `rdd.mapValues(x => x+1)` | `{(1,3), (3,5), (3,7)}` |
 | `flatMapValues(func)` | Apply a function that returns an iterator to each value of a pair RDD, and for each element returned, produce a key/value entry with the old key. Often used for tokenization | `rdd.flatMapValues(x => (x to 5))` | `{(1,2), (1,3),(1,4), (1, 5),(3, 4),(3, 5)}` |
-| `keys()` | Return an RDD of just the keys  | `rdd.keys()` | `{1, 3, 3}` |
-| `values()`| Return an RDD of just the values | `rdd.values()` | `{2, 4, 6}`|
-| `sortByKey()` |  Return an RDD sorted by the key| `rdd.sortByKey()`| `{(1, 2), (3, 4), (3, 6)}` |
+| `keys` | Return an RDD of just the keys  | `rdd.keys()` | `{1, 3, 3}` |
+| `values`| Return an RDD of just the values | `rdd.values()` | `{2, 4, 6}`|
+| `sortByKey` |  Return an RDD sorted by the key| `rdd.sortByKey()`| `{(1, 2), (3, 4), (3, 6)}` |
 
 
 **Table 4-2.** Transformations on two pair RDDs 
